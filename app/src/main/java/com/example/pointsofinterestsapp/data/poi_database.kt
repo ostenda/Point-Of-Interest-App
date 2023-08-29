@@ -8,23 +8,5 @@ import androidx.room.*
 
 abstract class poi_database: RoomDatabase() {
 
-    abstract fun poiDao(): poiDao
-
-    companion object {
-        private var instance: poi_database? = null
-
-
-        fun getDatabase(ctx: Context) : poi_database {
-            var tmpInstance = instance
-            if(tmpInstance == null) {
-                tmpInstance = Room.databaseBuilder(
-                    ctx.applicationContext,
-                    poi_database::class.java,
-                    "poiDatabase"
-                ).build()
-                instance = tmpInstance
-            }
-            return tmpInstance
-        }
-    }
+    abstract val dao: poiDao
 }
